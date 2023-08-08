@@ -24,7 +24,7 @@ resource "aws_iam_policy" "user_policies" {
 }
 
 resource "aws_iam_role_policy_attachment" "user_policies" {
-  role       = "${aws_iam_role.role.*.name}"
+  role       = join("", aws_iam_role.role.*.name)
   policy_arn = "${element(aws_iam_policy.user_policies.*.arn, count.index)}"
   count      = "${length(var.policy_jsons)}"
 }
