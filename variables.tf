@@ -48,3 +48,9 @@ variable "enabled" {
   description = "Set to `false` to prevent the module from creating any resources"
   type        = bool
 }
+
+variable "attach_rds_directoryservice_access_policy" {
+  description = "Toggles attachment of the attach_rds_directoryservice_access_policy
+  type        = bool
+  default     = false
+}
