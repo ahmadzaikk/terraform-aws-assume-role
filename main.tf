@@ -24,13 +24,13 @@ resource "aws_iam_policy" "user_policies" {
 }
 
 resource "aws_iam_role_policy_attachment" "user_policies" {
-  role       = "${aws_iam_role.main.name}"
+  role       = "${aws_iam_role.role.name}"
   policy_arn = "${element(aws_iam_policy.user_policies.*.arn, count.index)}"
   count      = "${length(var.policy_jsons)}"
 }
 
 resource "aws_iam_role_policy_attachment" "rds-directoryservice-access-role" {
-  role       = "${aws_iam_role.main.name}"
+  role       = "${aws_iam_role.role.name}"
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonRDSDirectoryServiceAccess"
   count      = "${var.attach_rds_directoryservice_access_policy ? 1 : 0}"
 }
