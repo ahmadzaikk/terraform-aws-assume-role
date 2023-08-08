@@ -30,3 +30,9 @@ resource "aws_iam_role_policy_attachment" "role" {
   role       = join("", aws_iam_role.role.*.name)
   policy_arn = join("", aws_iam_policy.role.*.arn)
 }
+
+resource "aws_iam_role_policy_attachment" "rds-directoryservice-access-role" {
+  role       = "${aws_iam_role.main.name}"
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonRDSDirectoryServiceAccess"
+  count      = "${var.attach_rds_directoryservice_access_policy ? 1 : 0}"
+}
