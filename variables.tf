@@ -56,7 +56,7 @@ variable "enabled" {
 }
 
 variable "attach_rds_directoryservice_access_policy" {
-  description = "Toggles attachment of the attach_rds_directoryservice_access_policy
+  description = "Toggles attachment of the attach_rds_directoryservice_access_policy"
   type        = bool
   default     = false
 }
